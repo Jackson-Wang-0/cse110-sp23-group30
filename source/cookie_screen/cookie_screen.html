@@ -10,18 +10,44 @@
       <video id="video-player" src="media/media/video_blue.mp4" autoplay></video>
     </div>
 
-    <!-- Buttons -->
-    <div class="buttons_container">
-      <button class="glow-on-hover" type ="button"  onclick="shakeCookie()">Shake</button>
-      <button class="glow-on-hover" type ="button" onclick="goToHome()">Home</button>
-      <button class="glow-on-hover" type ="button" onclick="restartGame()">Restart</button>
+    <!-- tap-wrap -->
+    <div class = "tapWrap">
+      <div class="setting_icon">
+        <img id="setting_icon" src="media/media/icons8-settings-50.png" alt="Setting icon">
+      </div>
+      <!-- volume , language, etc...-->
+      <div class="volume_icon">
+        <img id="volume-icon" class="volume-icon" src="media/media/volume-level-1.svg" alt="Volume icon">
+      </div>
+
+      <div class="volume-controls">
+        <input type="range" id="volume-slider" class="vertical-slider" min="0" max="100" step="1" value="50">
+      </div>
     </div>
 
-     <!-- Fortune Cookie and Message -->
-    <div id="fortune-cookie">
-      <img src="media/media/cookie_before.png" alt="Fortune Cookie">
+    <div class="right_box">
+      <div class="credit">
+        <div id="fortune-cookie-credit">
+          <img src="media/media/fortune-cookie.png">
+        </div>
+        <div id ="credit">
+          50000
+        </div>
+      </div>
+      <!-- Fortune Cookie and Message -->
+      <div id="fortune-cookie">
+        <img src="media/media/cookie_before.png" alt="Fortune Cookie">
+      </div>
+      <p id="fortune-message"></p>
+
+      <!-- Buttons -->
+      <div class="buttons_container">
+        <button class="glow-on-hover" type ="button" onclick="goToHome()">Back to home</button>
+        <button class="glow-on-hover" type ="button"  onclick="shakeCookie()">Shake the cookie</button>
+        <button class="glow-on-hover" type ="button" onclick="restartGame()">Restart the game</button>
+      </div>
+
     </div>
-    <p id="fortune-message"></p>
   </div>
 
   <!-- Background music , To be Implemented -->

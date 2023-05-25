@@ -3,8 +3,19 @@ const cookie = document.getElementById("fortune-cookie");
 const message = document.getElementById("fortune-message");
 const backgroundMusic = document.getElementById('background-music');
 const buttonsContainer = document.querySelector(".buttons_container");
+
+// videos 
 var videoPlayer = document.getElementById('video-player');
 var fullscreenVideo = document.getElementById('fullscreen-video');
+var videoStarted = false;
+
+// volumes
+const volumeSlider = document.getElementById("volume-slider");
+const volumeIcon = document.getElementById("volume-icon");
+backgroundMusic.volume = 0; 
+
+// credit
+const creditElement = document.getElementById("credit");
 
 // video array for animation
 const videos = [
@@ -42,14 +53,23 @@ const messages = [
 
 
 function shakeCookie() {
+    // prevent user clicking multiple times
+    cookie.classList.remove("shake-animation");
+    // Clear the fortune message
+    message.textContent = "";
+    // Hide the fortune message
+    message.style.display = "none";
+
     cookie.innerHTML = '<img src="media/media/cookie_before.png" alt="Cracked Cookie">';
     // Clear the fortune message
     message.textContent = "";
     // Hide the fortune message
     message.style.display = "none";
 
-    // Lower the volume of the background music
-    backgroundMusic.volume = 0.2; // Adjust the volume level as needed
+    // Increase the credit by 100
+    let credit = parseInt(creditElement.textContent);
+    credit += 100;
+    creditElement.textContent = credit;
 
     // Randomly select a video from the 'videos' array
     const randomIndex = Math.floor(Math.random() * videos.length);
@@ -60,17 +80,36 @@ function shakeCookie() {
     fullscreenVideo.style.display = 'block';
     videoPlayer.play();
 
+    // skip if dont wanna see animation
+    document.addEventListener("click", skipVideo);
+
 }
+
+function skipVideo() {
+    if (videoStarted && videoPlayer.currentTime != videoPlayer.duration) {
+        videoPlayer.currentTime = videoPlayer.duration;
+    }
+}
+
+videoPlayer.addEventListener('playing', function() {
+    videoStarted = true;
+});
 
 videoPlayer.addEventListener('ended', function() {
     fullscreenVideo.style.display = 'none';
     openFortune();
-    backgroundMusic.play();
-    backgroundMusic.volume = 1;
 });
 
 function openFortune() {
+    // remove animation before another if user clicks frequenly
+    cookie.classList.remove("shake-animation");
+    // Clear the fortune message
+    message.textContent = "";
+    // Hide the fortune message
+    message.style.display = "none";
+
     cookie.classList.add("shake-animation");
+
     setTimeout(function() {
         cookie.classList.remove("shake-animation");
     
@@ -107,3 +146,16 @@ function goToHome() {
     window.location.href = "../opening_screen/opening-screen.html";
 }
 
+volumeSlider.addEventListener("input", () => {
+    const volumeLevel = volumeSlider.value / 100;
+    backgroundMusic.volume = volumeLevel;
+    backgroundMusic.play();
+  
+    if (volumeLevel < 0.5) {
+      volumeIcon.src = "media/media/volume-level-1.svg";
+      volumeIcon.alt = "Volume level 1";
+    } else {
+      volumeIcon.src = "media/media/volume-level-2.svg";
+      volumeIcon.alt = "Volume level 2";
+    }
+});
