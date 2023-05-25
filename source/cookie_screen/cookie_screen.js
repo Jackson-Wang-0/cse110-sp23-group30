@@ -159,3 +159,5 @@ volumeSlider.addEventListener("input", () => {
       volumeIcon.alt = "Volume level 2";
     }
 });
+
+module.exports = {shakeCookie, openFortune, restartGame, goToHome}
