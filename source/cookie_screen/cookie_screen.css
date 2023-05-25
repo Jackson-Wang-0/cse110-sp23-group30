@@ -3,6 +3,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+
+    background-image: url("media/media/background_image.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .buttons_container {
@@ -14,15 +19,23 @@
     margin-bottom: 10px; /* Adjust the spacing by changing the value */
 }
 
-#video-background {
+#fullscreen-video {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    z-index: -1;
+    z-index: 9999;
+    background-color: black;
+    display: none;
 }
+
+#fullscreen-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 #fortune-cookie {
     position: relative;
@@ -129,44 +142,4 @@
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
-}
-
-/* CSS for the background animation */
-@keyframes float {
-    0% {
-      transform: translateY(100%) translateX(calc(100vw * var(--x)));
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-100%) translateX(calc(100vw * var(--x)));
-      opacity: 0;
-    }
-}
-  
-.floating-cookie {
-    position: fixed;
-    bottom: 0;
-    animation: float 20s linear infinite;
-    transform-origin: center;
-}
-  
-.floating-cookie img {
-    width: 25px;
-    height: 25px;
-    animation: rotate 5s linear infinite;
-}
-  
-@keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
 }

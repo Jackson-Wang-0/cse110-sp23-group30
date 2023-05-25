@@ -5,6 +5,11 @@
 </head>
 <body>
   <div class="container">
+    <!-- when user clicks shake animation -->
+    <div id="fullscreen-video">
+      <video id="video-player" src="media/media/video_blue.mp4" autoplay></video>
+    </div>
+
     <!-- Buttons -->
     <div class="buttons_container">
       <button class="glow-on-hover" type ="button"  onclick="shakeCookie()">Shake</button>
@@ -14,19 +19,13 @@
 
      <!-- Fortune Cookie and Message -->
     <div id="fortune-cookie">
-      <img src="cookie_before.png" alt="Fortune Cookie">
+      <img src="media/media/cookie_before.png" alt="Fortune Cookie">
     </div>
     <p id="fortune-message"></p>
   </div>
 
-  <!-- Video background -->
-  <video autoplay muted loop id="video-background">
-    <source src="background_video.mp4" type="video/mp4">
-  </video>
-
   <!-- Background music , To be Implemented -->
-  <audio id="background-music" src="lisa.mp3" loop></audio>
-  <button onclick="playBackgroundMusic()">Play Music</button>
+  <audio id="background-music" src="media/media/lisa.mp3" loop></audio>
 
   <script src="cookie_screen.js"></script>
 </body>
