@@ -12,7 +12,6 @@ var videoStarted = false;
 // volumes
 const volumeSlider = document.getElementById("volume-slider");
 const volumeIcon = document.getElementById("volume-icon");
-backgroundMusic.volume = 0; 
 
 // credit
 const creditElement = document.getElementById("credit");
