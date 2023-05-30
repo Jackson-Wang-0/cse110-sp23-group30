@@ -89,15 +89,16 @@ function skipVideo() {
         videoPlayer.currentTime = videoPlayer.duration;
     }
 }
+if (videoPlayer) {
+    videoPlayer.addEventListener('playing', function() {
+        videoStarted = true;
+    });
 
-videoPlayer.addEventListener('playing', function() {
-    videoStarted = true;
-});
-
-videoPlayer.addEventListener('ended', function() {
-    fullscreenVideo.style.display = 'none';
-    openFortune();
-});
+    videoPlayer.addEventListener('ended', function() {
+        fullscreenVideo.style.display = 'none';
+        openFortune();
+    });
+}
 
 function openFortune() {
     // remove animation before another if user clicks frequenly
