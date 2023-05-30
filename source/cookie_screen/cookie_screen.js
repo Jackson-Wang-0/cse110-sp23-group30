@@ -145,19 +145,20 @@ function goToHome() {
     // go to home 
     window.location.href = "../opening_screen/opening-screen.html";
 }
+if (volumeSlider) {
+    volumeSlider.addEventListener("input", () => {
+        const volumeLevel = volumeSlider.value / 100;
+        backgroundMusic.volume = volumeLevel;
+        backgroundMusic.play();
 
-volumeSlider.addEventListener("input", () => {
-    const volumeLevel = volumeSlider.value / 100;
-    backgroundMusic.volume = volumeLevel;
-    backgroundMusic.play();
-  
-    if (volumeLevel < 0.5) {
-      volumeIcon.src = "media/media/volume-level-1.svg";
-      volumeIcon.alt = "Volume level 1";
-    } else {
-      volumeIcon.src = "media/media/volume-level-2.svg";
-      volumeIcon.alt = "Volume level 2";
-    }
+        if (volumeLevel < 0.5) {
+          volumeIcon.src = "media/media/volume-level-1.svg";
+          volumeIcon.alt = "Volume level 1";
+        } else {
+          volumeIcon.src = "media/media/volume-level-2.svg";
+          volumeIcon.alt = "Volume level 2";
+        }
 });
+}
 
 module.exports = {shakeCookie, openFortune, restartGame, goToHome}
